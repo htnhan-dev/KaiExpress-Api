@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.PG_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
-    })
+    }),
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService]
